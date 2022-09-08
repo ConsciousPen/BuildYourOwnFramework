@@ -1,78 +1,70 @@
 package misc;
 
-import base.LocalDesiredCapabilities;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import conf.TestProperties;
 import base.BaseTest;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
-import org.codehaus.plexus.logging.LoggerManager;
+import enums.TestProperties;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.remote.RemoteWebDriver;
+import org.slf4j.Logger;
 import org.testng.annotations.Test;
-import util.ScreenShotManager;
 
-import java.io.File;
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.logging.LogManager;
 
 public class ActionsExercises extends BaseTest {
-    private static final Logger logger = LogManager.getLogger(ActionsExercises.class);
 
     @Test
     public void threads() throws InterruptedException {
-        open("https://www.ksrtc.in");
-        ScreenShotManager.saveScreenShot();
+        getDriver().get("https://www.ksrtc.in");
+        // ScreenShotManager.saveScreenShot();
     }
 
     @Test
     public void logging() {
-        logger.info("logging info test");
-        logger.warn("logging warn test");
-        logger.debug("logging debug test");
-        logger.error("logging error test", new NullPointerException("NullError"));
+       // logger.info("logging info test");
+       // logger.warn("logging warn test");
+       // logger.debug("logging debug test");
+       // logger.error("logging error test", new NullPointerException("NullError"));
 
     }
 
     @Test
     public void mouseOver() {
-        Actions actions = new Actions(driver);
+        Actions actions = new Actions(getDriver());
         By accountList = By.id("nav-link-accountList");
         By searchField = By.id("twotabsearchtextbox");
-        WebElement element = driver.findElement(accountList);
+        WebElement element = getDriver().findElement(accountList);
         actions.moveToElement(element).perform();
-        actions.moveToElement(driver.findElement(searchField)).doubleClick().keyDown(Keys.SHIFT).sendKeys(Keys.SHIFT, "test").perform();
+        actions.moveToElement(getDriver().findElement(searchField)).doubleClick().keyDown(Keys.SHIFT).sendKeys(Keys.SHIFT, "test").perform();
         actions.moveToElement(element).perform();
     }
 
     @Test
     public void dragAndDrop() throws MalformedURLException {
         URL url = new URL("http://jqueryui.com/droppable/");
-        Actions actions = new Actions(driver);
+        Actions actions = new Actions(getDriver());
 
-        open(url.toString());
+        getDriver().get(url.toString());
 
-        driver.switchTo().frame(driver.findElement(By.className("demo-frame")));
-        WebElement droppable = driver.findElement(By.id("droppable"));
-        WebElement draggable = driver.findElement(By.id("draggable"));
+        getDriver().switchTo().frame(getDriver().findElement(By.className("demo-frame")));
+        WebElement droppable = getDriver().findElement(By.id("droppable"));
+        WebElement draggable = getDriver().findElement(By.id("draggable"));
 
         actions.dragAndDrop(draggable, droppable).perform();
 
-        driver.switchTo().defaultContent();
+        getDriver().switchTo().defaultContent();
     }
 
     @Test
     public void tabs()  {
         System.setProperty("webdriver.chrome.driver", TestProperties.CHROME_DRIVER);
 
-        open("http://qaclickacademy.com/practice.php");
-        System.out.println(driver.findElements(By.tagName("a")).size());
+        getDriver().get("http://qaclickacademy.com/practice.php");
+        System.out.println(getDriver().findElements(By.tagName("a")).size());
 
-        WebElement footer = driver.findElement(By.id("gf-BIG"));// Limiting webdriver scope
+        WebElement footer = getDriver().findElement(By.id("gf-BIG"));// Limiting webdriver scope
 
         System.out.println(footer.findElements(By.tagName("a")).size());
 
@@ -92,12 +84,12 @@ public class ActionsExercises extends BaseTest {
             }
 
         }// opens all the tabs
-        Set<String> abc = driver.getWindowHandles();//4
+        Set<String> abc = getDriver().getWindowHandles();//4
         Iterator<String> it = abc.iterator();
 
         while (it.hasNext()) {
-            driver.switchTo().window(it.next());
-            System.out.println(driver.getTitle());
+            getDriver().switchTo().window(it.next());
+            System.out.println(getDriver().getTitle());
         }
     }
     By inputLeavingFrom = By.xpath("//input[@id='fromPlaceName']");
@@ -106,25 +98,25 @@ public class ActionsExercises extends BaseTest {
     public void dropdown() throws InterruptedException {
         String bengaluru_internation_aiport = "BENGALURU INTERNATION AIRPORT";
 
-        open("https://www.ksrtc.in");
-        driver.findElement(inputLeavingFrom).sendKeys(bengaluru_internation_aiport.substring(0, 4));
+        getDriver().get("https://www.ksrtc.in");
+        getDriver().findElement(inputLeavingFrom).sendKeys(bengaluru_internation_aiport.substring(0, 4));
         Thread.sleep(2000);
 
-        driver.findElement(inputLeavingFrom).sendKeys(Keys.DOWN);
+        getDriver().findElement(inputLeavingFrom).sendKeys(Keys.DOWN);
 
-        System.out.println(driver.findElement(inputLeavingFrom).getText());
+        System.out.println(getDriver().findElement(inputLeavingFrom).getText());
 
         autoSuggestiveField(bengaluru_internation_aiport);
     }
 
     @Test
     public void takeScreenShot() throws InterruptedException {
-        open("https://www.ksrtc.in");
-        ScreenShotManager.saveScreenShot();
+        getDriver().get("https://www.ksrtc.in");
+        //ScreenShotManager.saveScreenShot();
     }
 
     private void autoSuggestiveField(String value) {
-        JavascriptExecutor js = (JavascriptExecutor) driver;
+        JavascriptExecutor js = (JavascriptExecutor) getDriver();
 
         String script = "return document.getElementById(\"fromPlaceName\").value;";
 
@@ -134,7 +126,7 @@ public class ActionsExercises extends BaseTest {
         while (!js.executeScript(script).toString().equalsIgnoreCase(value)
                 && currentTime < millis) {
 
-            driver.findElement(inputLeavingFrom).sendKeys(Keys.DOWN);
+            getDriver().findElement(inputLeavingFrom).sendKeys(Keys.DOWN);
             currentTime = System.currentTimeMillis();
             System.out.println(System.currentTimeMillis());
         }
