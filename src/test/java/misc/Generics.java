@@ -6,8 +6,13 @@ public class Generics {
         return num2;
     }
 
+    public static <T extends Number> double add(T num1, T num2) {
+        return num1.doubleValue() + num2.doubleValue();
+    }
+
     public static void main(String[] args) {
         System.out.println(calculateMin(new Person("Adam", 111), new Person("Anna", 44)));
+        System.out.println(add(1.5, 3.14f));
     }
 
     public static class Person implements Comparable<Person> {
