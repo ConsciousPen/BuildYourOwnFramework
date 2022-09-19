@@ -5,7 +5,7 @@ import java.util.List;
 
 public class GenericsTypeInference {
   /*
-        Compilers ability to look at each methpd invocation and corresponding declaration
+        Compilers ability to look at each method invocation and corresponding declaration
    to determine the type argument/s such as T that make the invocation applicable
 
          the inference algo determines the types of args the type that the result
@@ -20,9 +20,9 @@ public class GenericsTypeInference {
    because of the type inference algorithm we can use instantiation like this :
    List<String> list  = new ArrayList();
 
-   Generic methods and type interference:
-       Enables us to invoke a generic method as you would an ordinary method,
-            without specifying a type between angle brackets
+        Generic methods and type interference:
+    Enables us to invoke a generic method as you would an ordinary method,
+    without specifying a type between angle brackets
    */
 
     public static <T> void addStore(T t, List<Bucket<T>> list) {
