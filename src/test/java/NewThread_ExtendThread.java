@@ -1,5 +1,3 @@
-package misc;
-
 public class NewThread_ExtendThread extends Thread {
 
     NewThread_ExtendThread() {

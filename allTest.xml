@@ -2,8 +2,8 @@
 <suite name="All tests">
     <test name="regression" preserve-order="true" >
         <classes>
-            <class name="TestSearch" />
-            <class name="TestSearchStepsApproach" />
+            <class name="tests.TestSearch" />
+            <class name="tests.TestSearchStepsApproach" />
         </classes>
     </test>
 </suite>

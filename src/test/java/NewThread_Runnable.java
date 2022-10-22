@@ -1,5 +1,3 @@
-package misc;
-
 public class NewThread_Runnable implements Runnable {
     Thread t;
 
