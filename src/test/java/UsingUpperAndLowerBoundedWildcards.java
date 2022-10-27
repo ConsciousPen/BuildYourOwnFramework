@@ -19,6 +19,18 @@ public class UsingUpperAndLowerBoundedWildcards {
         destination.addAll(source);
     }*/
 
+    /**
+     * When to use
+     *
+     * there is so called get and put principle
+     *  use UPPER bounded wildcard(extends) when you only get values out of a structure or collection
+     *  use LOWER bounded wildcard(super) when you only put values into a structure or collection
+     *
+     *  DO NOT USE WILDCARDS if you wnat to DO READ AND WRITE as well
+     *  we use BOUNDED TYPE parameters in this cases
+
+     */
+
     public static <T> void copy(List<? extends T> source, List<? super T> destination) {
         for (T t : source) {
             destination.add(t);

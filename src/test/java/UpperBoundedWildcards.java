@@ -31,6 +31,7 @@ public class UpperBoundedWildcards {
     you can not guarantee what list it is really pointing to.
     The only thing you can do for sure is to read the items.
 
+     DOES NOT PROVIDE IMMUTABILITY, you can add NULL or execute other operations like sorting
      */
 
     public static void showAll(List<? extends Number> list) {
