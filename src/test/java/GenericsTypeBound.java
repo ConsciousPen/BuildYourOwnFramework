@@ -1,7 +1,7 @@
 public class GenericsTypeBound {
     /**
      *
-     *     It is misleading becausen no matter we are dealing with classes
+     *     It is misleading because no matter we are dealing with classes
      *     or interfaces - we have to use the extends keyword
      *     and we can define multiple bounds.
      *
