@@ -44,6 +44,10 @@ public class TypeErasureAndBridgeMethods {
             super(data);
         }
 
+        public void setData(Object data) { <---------------------- THIS IS THE BRIDGE
+            setData((Integer) data);
+        }
+
         public void setData(Integer data) {
             super.setData(data);
         }
