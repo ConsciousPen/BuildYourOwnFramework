@@ -1,3 +1,5 @@
+package generics;
+
 import java.io.Serializable;
 
 public class TypeErasureAndBridgeMethods {

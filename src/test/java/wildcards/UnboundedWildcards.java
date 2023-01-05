@@ -1,3 +1,5 @@
+package wildcards;
+
 import misc.wildcards.Rectangle;
 import misc.wildcards.Shape;
 

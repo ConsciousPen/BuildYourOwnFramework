@@ -1,3 +1,5 @@
+package wildcards;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -23,7 +25,7 @@ public class UpperBoundedWildcards {
     We cannot add an Integer to the list because thy type cannot be guranteed - it may be List<Double>
     We cannot add an Double to the list because thy type cannot be guranteed - it may be List<Integer>
 
-    Lower bounded wildcard will works fine. See class LowerBoundedWildcards
+    Lower bounded wildcard will works fine. See class wildcards.LowerBoundedWildcards
         List<? super Number> list2 = new ArrayList<>();
         list2.add(new Integer(23));
 

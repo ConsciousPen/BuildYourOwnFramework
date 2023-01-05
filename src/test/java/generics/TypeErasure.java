@@ -1,3 +1,5 @@
+package generics;
+
 import java.io.Serializable;
 
 public class TypeErasure {
@@ -30,7 +32,7 @@ public class TypeErasure {
     }
 }
 
-class FirstScore<T> { // same with FirstScore<Object>
+class FirstScore<T> { // same with generics.FirstScore<Object>
     private T item; // Object item
 
     public T getItem() { // Object getItem()
@@ -43,7 +45,7 @@ class FirstScore<T> { // same with FirstScore<Object>
 
 }
 
-class SecondScore<T extends Serializable> { // same with SecondScore<Serializable>
+class SecondScore<T extends Serializable> { // same with generics.SecondScore<Serializable>
     private T item; // Serializable item
 
     public T getItem() { // Serializable getItem()
