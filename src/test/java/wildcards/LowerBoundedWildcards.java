@@ -42,9 +42,12 @@ public class LowerBoundedWildcards {
         list.add("dendi");
 
         showAll(list);
+
         List<? super Number> nums = new ArrayList<>();
         nums.add(3);
         nums.add(3.5);
         nums.add(3f);
+
+        showAll(nums);
     }
 }

@@ -31,8 +31,8 @@ public class UnboundedWildcards {
         List<? extends Number> l1 = new ArrayList<Integer>();
         print2(l1);
     }
-/*
-    public static void drawAll(List<T> shapes) {
+
+    /*public static void drawAll(List<T> shapes) {
         for(Shape shape : shapes){
             shape.draw();
         }
