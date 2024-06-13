@@ -1,6 +1,6 @@
 package pages;
 
-import base.DriverFactory;
+import base.BrowserController;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -24,8 +24,8 @@ public class BasePage {
     JavascriptExecutor executor;
 
     public BasePage() {
-        this.driver = DriverFactory.threadLocalDriver.get();
-        this.webDriverWait = DriverFactory.getWebDriverWait();
+        this.driver = BrowserController.threadLocalDriver.get();
+        this.webDriverWait = BrowserController.getWebDriverWait();
         this.builder = new Actions(driver);
         this.executor = (JavascriptExecutor) driver;
         // Init elements only at the moment of calling them (Lazy init)

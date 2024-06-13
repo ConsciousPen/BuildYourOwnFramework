@@ -84,7 +84,7 @@ public class SuiteListener implements ISuiteListener {
             // Get the listener from the suite and create the listener element
             List<String> suiteListeners = xmlSuite.getListeners();
             for (String listener : suiteListeners) {
-                Element listenerElement = document.createElement("listener");
+                Element listenerElement = document.createElement("video");
                 listenerElement.setAttribute("class-name", listener);
                 listenersElement.appendChild(listenerElement);
             }
